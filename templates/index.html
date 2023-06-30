@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+{% block title %}Welcome to TextSolver!!{% endblock title %}
+{% block indexActive %} active {% endblock indexActive %}
+
+{% block body %}
+<h4 class="text-center my-3">TextSolver</h4>
+<h6 class="text-center my-2">Please Enter Your Text Here</h6>
+
+<form action="/analyze" method="POST">
+    {% csrf_token %}
+    <div class="d-flex justify-content-center">
+        <textarea class="form-control w-75" name="textBox" style="border: 2px solid black;"
+            id="exampleFormControlTextarea1"  placeholder="Ex.  he''re  is ex'][]xample....." rows="8">{{ analyzed }} </textarea>
+    </div>
+
+    <div class="mb-3 mt-4 d-flex justify-content-center ">
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+            <input type="checkbox" name="removepunc" class="btn-check" id="btncheck1" autocomplete="off">
+            <label class="btn btn-outline-success" for="btncheck1">Remove Punctuations</label>
+
+            <input type="checkbox" name="fullcaps" class="btn-check" id="btncheck2" autocomplete="off">
+            <label class="btn btn-outline-success" for="btncheck2">Get Uppercase</label>
+
+            <input type="checkbox" name="fullow" class="btn-check" id="btncheck5" autocomplete="off">
+            <label class="btn btn-outline-success" for="btncheck5">Get Lowercase</label>
+
+            <input type="checkbox" name="newlineremover" class="btn-check" id="btncheck3" autocomplete="off">
+            <label class="btn btn-outline-success" for="btncheck3">Remove New Line</label>
+
+            <input type="checkbox" name="extraspaceremover" class="btn-check" id="btncheck4" autocomplete="off">
+            <label class="btn btn-outline-success" for="btncheck4">Remove Extra Space</label>
+        </div>
+    </div>
+    <div class="d-grid gap-2 col-2 mx-auto">
+        <button class="bg-danger text-white" type="Submit">Get Results</button>
+    </div>
+</form>
+
+{% endblock body %}
